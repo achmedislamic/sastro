@@ -1,8 +1,12 @@
 module.exports = {
+    presets: [require("./vendor/ph7jack/wireui/tailwind.config.js")],
     purge: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./vendor/ph7jack/wireui/resources/**/*.blade.php",
+        "./vendor/ph7jack/wireui/ts/**/*.ts",
+        "./vendor/ph7jack/wireui/src/View/**/*.php",
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
@@ -11,5 +15,5 @@ module.exports = {
     variants: {
         extend: {},
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 };
