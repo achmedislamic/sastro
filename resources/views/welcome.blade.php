@@ -26,8 +26,8 @@
 
                 <x-card cardClasses="mt-5">
                     <div class="flex flex-row mx-auto justify-between mb-5">
-                        <x-button primary label="Tambah" onclick="$openModal('modal')"/>
                         @livewire('mahasiswa-form')
+                        <x-button positive label="Tambah" onclick="$openModal('modal')"/>
                         <x-input icon="search" placeholder="Pencarian"></x-input>
                     </div>
                     <table class="table-auto border-solid border-gray-500">
