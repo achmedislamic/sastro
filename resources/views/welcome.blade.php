@@ -26,7 +26,8 @@
 
                 <x-card cardClasses="mt-5">
                     <div class="flex flex-row mx-auto justify-between mb-5">
-                        <x-button primary label="Tambah" />
+                        <x-button primary label="Tambah" onclick="$openModal('modal')"/>
+                        @livewire('mahasiswa-form')
                         <x-input icon="search" placeholder="Pencarian"></x-input>
                     </div>
                     <table class="table-auto border-solid border-gray-500">
@@ -61,8 +62,8 @@
             </div>
         </div>
 
+        @livewireScripts
         @wireUiScripts
         <script src="{{ mix('js/app.js') }}"></script>
-        @livewireScripts
     </body>
 </html>
