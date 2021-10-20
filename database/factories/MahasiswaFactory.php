@@ -23,7 +23,7 @@ class MahasiswaFactory extends Factory
     {
         return [
             'nama' => $this->faker->name(),
-            'nim' => $this->faker->unique()->randomNumber(),
+            'nim' => $this->faker->unique()->randomNumber(9, true),
         ];
     }
 }

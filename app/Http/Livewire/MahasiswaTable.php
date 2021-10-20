@@ -23,7 +23,7 @@ class MahasiswaTable extends Component
     {
         if (is_null($this->mahasiswa_id)) {
             return [
-                'mahasiswa.nim' => 'required|unique:mahasiswas,nim',
+                'mahasiswa.nim' => 'required|unique:mahasiswas,nim|max:9',
                 'mahasiswa.nama' => 'required'
             ];
         }
@@ -102,7 +102,7 @@ class MahasiswaTable extends Component
             ->when($this->sortField, function ($query) {
                 $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
             })
-            ->orderBy('nama')->paginate($this->rows);
+            ->orderBy('id', 'DESC')->paginate($this->rows);
         return view('livewire.mahasiswa-table', compact('mahasiswas'));
     }
 }

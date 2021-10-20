@@ -2,7 +2,7 @@
 
     <div class="w-full mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-            <h2 class="text-blue-500 font-bold text-xl">Tabel Mahasiswa
+            <h2 class="text-blue-500 font-bold text-xl mt-4">Tabel Mahasiswa
                 <x-loading />
             </h2>
         </div>
@@ -11,7 +11,7 @@
             <form wire:submit.prevent="simpan">
                 <x-modal.card title="Mahasiswa" blur wire:model.defer="modal">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <x-input label="NIM" wire:model="mahasiswa.nim"/>
+                        <x-input label="NIM" hint="Maksimal 9 Angka" wire:model="mahasiswa.nim"/>
                         <x-input label="Nama" wire:model="mahasiswa.nama"/>
                     </div>
 
@@ -49,7 +49,7 @@
 
                 <table class="w-full border-collapse table-fixed border border-1 border-green-600 text-left">
                     <thead>
-                        <tr>
+                        <tr class="bg-gray-200">
                             <th class="w-10 border border-1 border-green-600 p-2">No.</th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">NIM</th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">Nama</th>
@@ -81,6 +81,7 @@
                 </table>
                 <div class="mt-3">
                     {{ $mahasiswas->links() }}
+                    <x-loading />
                 </div>
             </div>
 
