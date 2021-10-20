@@ -16,7 +16,7 @@ class MahasiswaTable extends Component
     public $mahasiswa_id = null;
     public $confirming;
     public $search;
-    public $rows = 10;
+    public $rows;
     protected $queryString = ['search', 'sortAsc', 'sortField'];
 
     public function rules()
@@ -36,6 +36,7 @@ class MahasiswaTable extends Component
 
     public function mount($id = null)
     {
+        $this->rows = 10;
         $this->mahasiswa_id = $id;
         $this->mahasiswa = new Mahasiswa();
     }
@@ -74,6 +75,7 @@ class MahasiswaTable extends Component
 
         $this->modal = null;
         $this->mahasiswa_id = null;
+        $this->mahasiswa = new Mahasiswa();
 
         $this->render();
     }
@@ -86,6 +88,9 @@ class MahasiswaTable extends Component
     public function destroy($id)
     {
         Mahasiswa::destroy($id);
+        $this->confirming = null;
+        $this->mahasiswa_id = null;
+        $this->mahasiswa = new Mahasiswa();
     }
 
     public function render()

@@ -2,12 +2,14 @@
 
     <div class="w-full mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-            <h2 class="text-blue-500 font-bold text-xl">Tabel Mahasiswa</h2>
+            <h2 class="text-blue-500 font-bold text-xl">Tabel Mahasiswa
+                <x-loading />
+            </h2>
         </div>
 
         <x-card cardClasses="mt-5">
             <form wire:submit.prevent="simpan">
-                <x-modal.card title="Tambah Mahasiswa" blur wire:model.defer="modal">
+                <x-modal.card title="Mahasiswa" blur wire:model.defer="modal">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <x-input label="NIM" wire:model="mahasiswa.nim"/>
                         <x-input label="Nama" wire:model="mahasiswa.nama"/>
@@ -18,6 +20,7 @@
                             <div class="flex">
                                 <x-button primary label="Simpan" type="submit"/>
                                 <x-button flat label="Tutup" x-on:click="close" />
+                                <x-loading />
                             </div>
                         </div>
                     </x-slot>
@@ -31,7 +34,7 @@
                 <div class="flex flex-row mx-auto justify-between mb-5">
                     <x-select
                         placeholder="Pilih Jumlah Baris"
-                        wire:model.defer="rows"
+                        wire:model="rows"
                         searchable="false"
                     >
                         <x-select.option label="10" value="10" />
@@ -55,7 +58,7 @@
                     </thead>
                     <tbody class="space-y-11">
                         @forelse ($mahasiswas as $mahasiswa)
-                            <tr>
+                            <tr class="transition duration-200 ease-in-out hover:bg-green-100">
                                 <td class="border border-1 border-green-600 p-2">{{ $loop->index + 1 }}</td>
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nim }}</td>
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nama }}</td>
@@ -70,7 +73,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td>Tidak ada data</td>
+                                <td colspan="4" class="p-4">Tidak ada data</td>
                             </tr>
                         @endforelse
                         <tr></tr>
