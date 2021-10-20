@@ -25,35 +25,62 @@
             </form>
             <div class="flex flex-row mx-auto justify-between mb-5">
                 <x-button positive label="Tambah" wire:click="tambah()" wire:loading.attr="disabled"/>
-                <x-input icon="search" placeholder="Pencarian"></x-input>
+
             </div>
-            <table class="table-auto border-solid border-gray-500">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>NIM</th>
-                        <th>Nama</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($mahasiswas as $mahasiswa)
+            <div class="flex-col">
+                <div class="flex flex-row mx-auto justify-between mb-5">
+                    <x-select
+                        placeholder="Pilih Jumlah Baris"
+                        wire:model.defer="rows"
+                        searchable="false"
+                    >
+                        <x-select.option label="10" value="10" />
+                        <x-select.option label="25" value="25" />
+                        <x-select.option label="50" value="50" />
+                        <x-select.option label="100" value="100" />
+                    </x-select>
+                    <div>
+                        <x-input wire:model="search" icon="search" placeholder="Pencarian"></x-input>
+                    </div>
+                </div>
+
+                <table class="w-full border-collapse table-fixed border border-1 border-green-600 text-left">
+                    <thead>
                         <tr>
-                            <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $mahasiswa->nim }}</td>
-                            <td>{{ $mahasiswa->nama }}</td>
-                            <td>
-                                <x-button positive label="Ubah" wire:click="ubah({{ $mahasiswa->id }})"/>
-                            </td>
+                            <th class="w-10 border border-1 border-green-600 p-2">No.</th>
+                            <th class="w-1/3 border border-1 border-green-600 p-2">NIM</th>
+                            <th class="w-1/3 border border-1 border-green-600 p-2">Nama</th>
+                            <th class="w-auto border border-1 border-green-600 p-2">Aksi</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td>Tidak ada data</td>
-                        </tr>
-                    @endforelse
-                    <tr></tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="space-y-11">
+                        @forelse ($mahasiswas as $mahasiswa)
+                            <tr>
+                                <td class="border border-1 border-green-600 p-2">{{ $loop->index + 1 }}</td>
+                                <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nim }}</td>
+                                <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nama }}</td>
+                                <td class="flex border-b border-green-600 p-2">
+                                    <x-button warning label="Ubah" wire:click="ubah({{ $mahasiswa->id }})" class="mr-3"/>
+                                    @if($confirming === $mahasiswa->id)
+                                        <x-button negative wire:click="destroy({{ $mahasiswa->id }})" label="Anda Yakin?"/>
+                                    @else
+                                        <x-button dark wire:click="confirmDelete({{ $mahasiswa->id }})" label="Hapus"/>
+                                    @endif
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td>Tidak ada data</td>
+                            </tr>
+                        @endforelse
+                        <tr></tr>
+                    </tbody>
+                </table>
+                <div class="mt-3">
+                    {{ $mahasiswas->links() }}
+                </div>
+            </div>
+
         </x-card>
 
     </div>

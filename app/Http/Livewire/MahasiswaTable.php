@@ -4,14 +4,20 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Mahasiswa;
+use Livewire\WithPagination;
 use Illuminate\Validation\Rule;
 
 class MahasiswaTable extends Component
 {
+    use WithPagination, WithSorting;
+
     public $modal;
     public $mahasiswa;
     public $mahasiswa_id = null;
-    // protected $listeners = ['mahasiswaDitambah' => 'render'];
+    public $confirming;
+    public $search;
+    public $rows = 10;
+    protected $queryString = ['search', 'sortAsc', 'sortField'];
 
     public function rules()
     {
@@ -32,6 +38,11 @@ class MahasiswaTable extends Component
     {
         $this->mahasiswa_id = $id;
         $this->mahasiswa = new Mahasiswa();
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     private function bukaModal()
@@ -67,9 +78,26 @@ class MahasiswaTable extends Component
         $this->render();
     }
 
+    public function confirmDelete($id)
+    {
+        $this->confirming = $id;
+    }
+
+    public function destroy($id)
+    {
+        Mahasiswa::destroy($id);
+    }
+
     public function render()
     {
-        $mahasiswas = Mahasiswa::orderBy('nama')->get();
+        $mahasiswas = Mahasiswa::when($this->search, function ($query) {
+            $query->where('mahasiswas.nama', 'like', '%' . $this->search . '%')
+                ->orWhere('mahasiswas.nim', 'like', '%' . $this->search . '%');
+        })
+            ->when($this->sortField, function ($query) {
+                $query->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc');
+            })
+            ->orderBy('nama')->paginate($this->rows);
         return view('livewire.mahasiswa-table', compact('mahasiswas'));
     }
 }

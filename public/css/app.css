@@ -880,9 +880,6 @@ select {
 .z-50 {
 	z-index: 50;
 }
-.col-span-1 {
-	grid-column: span 1 / span 1;
-}
 .mx-auto {
 	margin-left: auto;
 	margin-right: auto;
@@ -908,6 +905,9 @@ select {
 }
 .mb-5 {
 	margin-bottom: 1.25rem;
+}
+.mr-4 {
+	margin-right: 1rem;
 }
 .mr-2 {
 	margin-right: 0.5rem;
@@ -942,8 +942,11 @@ select {
 .ml-4 {
 	margin-left: 1rem;
 }
-.mr-4 {
-	margin-right: 1rem;
+.mb-3 {
+	margin-bottom: 0.75rem;
+}
+.mb-4 {
+	margin-bottom: 1rem;
 }
 .block {
 	display: block;
@@ -968,12 +971,6 @@ select {
 }
 .hidden {
 	display: none;
-}
-.h-72 {
-	height: 18rem;
-}
-.h-16 {
-	height: 4rem;
 }
 .h-4 {
 	height: 1rem;
@@ -1017,8 +1014,14 @@ select {
 .w-full {
 	width: 100%;
 }
-.w-16 {
-	width: 4rem;
+.w-2 {
+	width: 0.5rem;
+}
+.w-auto {
+	width: auto;
+}
+.w-4\.5 {
+	width: 1.13rem;
 }
 .w-4 {
 	width: 1rem;
@@ -1053,6 +1056,18 @@ select {
 .w-3\.5 {
 	width: 0.875rem;
 }
+.w-8 {
+	width: 2rem;
+}
+.w-1\/3 {
+	width: 33.333333%;
+}
+.w-1\/4 {
+	width: 25%;
+}
+.w-1\/6 {
+	width: 16.666667%;
+}
 .max-w-sm {
 	max-width: 24rem;
 }
@@ -1065,8 +1080,11 @@ select {
 .flex-grow {
 	flex-grow: 1;
 }
-.table-auto {
-	table-layout: auto;
+.table-fixed {
+	table-layout: fixed;
+}
+.border-collapse {
+	border-collapse: collapse;
 }
 .origin-top-right {
 	transform-origin: top right;
@@ -1217,6 +1235,26 @@ select {
 	margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-y-11 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(2.75rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(2.75rem * var(--tw-space-y-reverse));
+}
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+.space-y-12 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(3rem * var(--tw-space-y-reverse));
+}
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
 .divide-y > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-y-reverse: 0;
 	border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -1252,14 +1290,14 @@ select {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.rounded-xl {
-	border-radius: 0.75rem;
-}
 .rounded-lg {
 	border-radius: 0.5rem;
 }
 .rounded-md {
 	border-radius: 0.375rem;
+}
+.rounded-xl {
+	border-radius: 0.75rem;
 }
 .rounded-full {
 	border-radius: 9999px;
@@ -1299,6 +1337,9 @@ select {
 .border-0 {
 	border-width: 0px;
 }
+.border-4 {
+	border-width: 4px;
+}
 .border-b {
 	border-bottom-width: 1px;
 }
@@ -1313,6 +1354,9 @@ select {
 }
 .border-solid {
 	border-style: solid;
+}
+.border-dotted {
+	border-style: dotted;
 }
 .border-none {
 	border-style: none;
@@ -1371,6 +1415,10 @@ select {
 }
 .border-transparent {
 	border-color: transparent;
+}
+.border-green-600 {
+	--tw-border-opacity: 1;
+	border-color: rgba(5, 150, 105, var(--tw-border-opacity));
 }
 .bg-gray-100 {
 	--tw-bg-opacity: 1;
@@ -1653,10 +1701,6 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(59, 130, 246, var(--tw-text-opacity));
 }
-.text-blue-600 {
-	--tw-text-opacity: 1;
-	color: rgba(37, 99, 235, var(--tw-text-opacity));
-}
 .text-secondary-700 {
 	--tw-text-opacity: 1;
 	color: rgba(63, 63, 70, var(--tw-text-opacity));
@@ -1788,12 +1832,12 @@ select {
 .opacity-60 {
 	opacity: 0.6;
 }
-.shadow-md {
-	--tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .shadow-lg {
 	--tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-md {
+	--tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-sm {
@@ -2227,9 +2271,6 @@ select {
 	}
 	.sm\:order-last {
 		order: 9999;
-	}
-	.sm\:col-span-2 {
-		grid-column: span 2 / span 2;
 	}
 	.sm\:mx-0 {
 		margin-left: 0px;
