@@ -1,9 +1,6 @@
 <?php
 
-use App\Models\Mahasiswa;
+use App\Http\Livewire\MahasiswaTable;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $mahasiswas = Mahasiswa::orderBy('nama')->get();
-    return view('welcome', compact('mahasiswas'));
-});
+Route::get('/', MahasiswaTable::class)->name('mahasiswa');
