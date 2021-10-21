@@ -50,9 +50,15 @@
                 <table class="w-full border-collapse table-fixed border border-1 border-green-600 text-left">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="w-10 border border-1 border-green-600 p-2">No.</th>
-                            <th class="w-1/3 border border-1 border-green-600 p-2">NIM</th>
-                            <th class="w-1/3 border border-1 border-green-600 p-2">Nama</th>
+                            <th class="w-10 border border-1 border-green-600 p-2">
+                                No.
+                            </th>
+                            <th class="w-1/3 border border-1 border-green-600 p-2">
+                                <x-button spinner wire:click="sortBy('nim')">NIM<x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                            </th>
+                            <th class="w-1/3 border border-1 border-green-600 p-2">
+                                <x-button spinner wire:click="sortBy('nama')" class="font-bold">Nama<x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                            </th>
                             <th class="w-auto border border-1 border-green-600 p-2">Aksi</th>
                         </tr>
                     </thead>
