@@ -47,24 +47,24 @@
                     </div>
                 </div>
 
-                <table class="w-full border-collapse table-fixed border border-1 border-green-600 text-left">
+                <table class="w-full border-collapse table-fixed border border-1 border-green-600 dark:text-white text-left">
                     <thead>
-                        <tr class="bg-gray-200">
+                        <tr class="bg-gray-200 dark:bg-gray-800 dark:text-white">
                             <th class="w-10 border border-1 border-green-600 p-2">
                                 No.
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nim')">NIM<x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button spinner wire:click="sortBy('nim')"><div class="text-black dark:text-white">NIM</div><x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nama')" class="font-bold">Nama<x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button spinner wire:click="sortBy('nama')" class="font-bold"><div class="text-black dark:text-white">Nama</div><x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-auto border border-1 border-green-600 p-2">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="space-y-11">
                         @forelse ($mahasiswas as $mahasiswa)
-                            <tr class="transition duration-200 ease-in-out hover:bg-green-100">
+                            <tr class="transition duration-200 ease-in-out hover:bg-green-100 dark:hover:bg-gray-600">
                                 <td class="border border-1 border-green-600 p-2">{{ $loop->index + 1 }}</td>
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nim }}</td>
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nama }}</td>

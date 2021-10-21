@@ -23,14 +23,14 @@ class MahasiswaTable extends Component
     {
         if (is_null($this->mahasiswa_id)) {
             return [
-                'mahasiswa.nim' => 'required|unique:mahasiswas,nim|max:9',
-                'mahasiswa.nama' => 'required'
+                'mahasiswa.nim' => 'required|unique:mahasiswas,nim|max:9|numeric',
+                'mahasiswa.nama' => 'required|alpha_num'
             ];
         }
 
         return [
-            'mahasiswa.nim' => ['required', Rule::unique('mahasiswas', 'nim')->ignore($this->mahasiswa->nim, 'nim')],
-            'mahasiswa.nama' => 'required'
+            'mahasiswa.nim' => ['required', 'numeric', Rule::unique('mahasiswas', 'nim')->ignore($this->mahasiswa->nim, 'nim')],
+            'mahasiswa.nama' => 'required|alpha_num'
         ];
     }
 
