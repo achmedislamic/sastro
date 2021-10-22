@@ -23,7 +23,7 @@ class MahasiswaTable extends Component
     {
         if (is_null($this->mahasiswa_id)) {
             return [
-                'mahasiswa.nim' => 'required|unique:mahasiswas,nim|max:9|numeric',
+                'mahasiswa.nim' => 'required|unique:mahasiswas,nim|digits_between:1,9|numeric',
                 'mahasiswa.nama' => 'required'
             ];
         }

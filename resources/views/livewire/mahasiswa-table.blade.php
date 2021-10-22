@@ -2,8 +2,8 @@
 
     <div class="w-full mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-            <h2 class="text-blue-500 font-bold text-xl mt-4">Tabel Mahasiswa
-                <x-loading />
+            <h2 class="text-blue-500 font-bold text-xl mt-4">
+                Tabel Mahasiswa
             </h2>
         </div>
 
@@ -27,7 +27,7 @@
                 </x-modal.card>
             </form>
             <div class="flex flex-row mx-auto justify-between mb-5">
-                <x-button positive label="Tambah" wire:click="tambah()" wire:loading.attr="disabled"/>
+                <x-button positive label="Tambah" wire:click="tambah()" spinner="tambah"/>
 
             </div>
             <div class="flex-col">
@@ -54,10 +54,10 @@
                                 No.
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nim')"><div class="text-black dark:text-white font-bold">NIM</div><x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button flat spinner="sortBy('nim')" wire:click="sortBy('nim')"><div class="text-black dark:text-white font-bold">NIM</div><x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nama')"><div class="text-black dark:text-white font-bold">Nama</div><x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button flat spinner="sortBy('nama')" wire:click="sortBy('nama')"><div class="text-black dark:text-white font-bold">Nama</div><x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-auto border border-1 border-green-600 p-2">Aksi</th>
                         </tr>
