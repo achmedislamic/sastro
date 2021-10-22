@@ -54,10 +54,10 @@
                                 No.
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nim')"><div class="text-black dark:text-white">NIM</div><x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button spinner wire:click="sortBy('nim')"><div class="text-black dark:text-white font-bold">NIM</div><x-sort-icon field="nim" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-1/3 border border-1 border-green-600 p-2">
-                                <x-button spinner wire:click="sortBy('nama')" class="font-bold"><div class="text-black dark:text-white">Nama</div><x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
+                                <x-button spinner wire:click="sortBy('nama')"><div class="text-black dark:text-white font-bold">Nama</div><x-sort-icon field="nama" :sortField="$sortField" :sortAsc="$sortAsc" /></x-button>
                             </th>
                             <th class="w-auto border border-1 border-green-600 p-2">Aksi</th>
                         </tr>
