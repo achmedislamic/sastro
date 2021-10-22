@@ -46,6 +46,11 @@ class MahasiswaTable extends Component
         $this->resetPage();
     }
 
+    public function bersihkanPencarian()
+    {
+        $this->search = '';
+    }
+
     private function bukaModal()
     {
         $this->modal = true;

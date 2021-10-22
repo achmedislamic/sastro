@@ -3,7 +3,7 @@
     <div class="w-full mx-auto sm:px-6 lg:px-8">
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
             <h2 class="text-blue-500 font-bold text-xl mt-4">
-                Tabel Mahasiswa
+                <a href="{{ route('mahasiswa') }}">Tabel Mahasiswa</a>
             </h2>
         </div>
 
@@ -43,7 +43,20 @@
                         <x-select.option label="100" value="100" />
                     </x-select>
                     <div>
-                        <x-input wire:model="search" icon="search" placeholder="Pencarian"></x-input>
+                        <x-input wire:model="search" icon="search" placeholder="Pencarian">
+                            <x-slot name="append">
+                                <div class="absolute inset-y-0 right-0 flex items-center p-0.5">
+                                    <x-button
+                                        class="rounded-r-md h-full"
+                                        icon="backspace"
+                                        wire:click="bersihkanPencarian()"
+                                        primary
+                                        flat
+                                        squared
+                                    />
+                                </div>
+                            </x-slot>
+                        </x-input>
                     </div>
                 </div>
 
@@ -69,11 +82,11 @@
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nim }}</td>
                                 <td class="border border-1 border-green-600 p-2">{{ $mahasiswa->nama }}</td>
                                 <td class="flex border-b border-green-600 p-2">
-                                    <x-button warning label="Ubah" wire:click="ubah({{ $mahasiswa->id }})" class="mr-3"/>
+                                    <x-button spinner="ubah({{ $mahasiswa->id }})" warning label="Ubah" wire:click="ubah({{ $mahasiswa->id }})" class="mr-3"/>
                                     @if($confirming === $mahasiswa->id)
-                                        <x-button negative wire:click="destroy({{ $mahasiswa->id }})" label="Anda Yakin?"/>
+                                        <x-button spinner="destroy({{ $mahasiswa->id }})" negative wire:click="destroy({{ $mahasiswa->id }})" label="Anda Yakin?"/>
                                     @else
-                                        <x-button dark wire:click="confirmDelete({{ $mahasiswa->id }})" label="Hapus"/>
+                                        <x-button spinner="confirmDelete({{ $mahasiswa->id }})" dark wire:click="confirmDelete({{ $mahasiswa->id }})" label="Hapus"/>
                                     @endif
                                 </td>
                             </tr>
