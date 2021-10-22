@@ -6,10 +6,11 @@ use Livewire\Component;
 use App\Models\Mahasiswa;
 use Livewire\WithPagination;
 use Illuminate\Validation\Rule;
+use WireUi\Traits\Actions;
 
 class MahasiswaTable extends Component
 {
-    use WithPagination, WithSorting;
+    use WithPagination, WithSorting, Actions;
 
     public $modal;
     public $mahasiswa;
@@ -82,6 +83,12 @@ class MahasiswaTable extends Component
         $this->mahasiswa_id = null;
         $this->mahasiswa = new Mahasiswa();
 
+        $this->notification()->success(
+            $title = 'Mahasiswa tersimpan!',
+            $description = 'Data Mahasiswa Telah Tersimpan'
+        );
+
+
         $this->render();
     }
 
@@ -96,6 +103,11 @@ class MahasiswaTable extends Component
         $this->confirming = null;
         $this->mahasiswa_id = null;
         $this->mahasiswa = new Mahasiswa();
+
+        $this->notification()->success(
+            $title = 'Mahasiswa terhapus!',
+            $description = 'Data Mahasiswa Telah Terhapus'
+        );
     }
 
     public function render()
